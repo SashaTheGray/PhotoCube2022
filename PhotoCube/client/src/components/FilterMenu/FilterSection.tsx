@@ -9,7 +9,7 @@ interface FilterSectionProps {
 const FilterSectionStyle = {
   borderRadius: "5px",
   border: "3px solid black",
-  backgroundColor: "red",
+  backgroundColor: "white",
   width: "30%",
   height: "80%",
 }
@@ -24,10 +24,7 @@ const FilterListStyle = {
 }
 
 // Representing a single row of filter selection in the filter menu.
-const FilterSection = (props: FilterSectionProps) => {
-  const filterName = props.filterName
-  const filters = props.filters
-
+const FilterSection = ({ filterName, filters }: FilterSectionProps) => {
   return (
     <>
       <Box style={FilterSectionStyle}>
@@ -49,9 +46,9 @@ const FilterSection = (props: FilterSectionProps) => {
             }}
           >
             <List sx={FilterListStyle} dense>
-              {Array.from(filters, filter => filter.name).map((filter) => (
-                <ListItem key={`{${filter}}`}>
-                  <ListItemText primary={`${filter}`} />
+              {[...filters].map((filter) => (
+                <ListItem>
+                  <ListItemText primary={filter.name} />
                 </ListItem>
               ))}
             </List>

@@ -10,7 +10,7 @@ const ProjectionSectionStyle = {
   flexDirection: "column",
   border: "3px solid black",
   borderRadius: "5px",
-  backgroundColor: "red",
+  backgroundColor: "white",
   alignItems: "center",
   justifyContent: "center",
   width: "50%",
