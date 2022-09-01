@@ -3,7 +3,7 @@
     public class PublicNodeDetails
     {
         public int Id { get; set; }
-        public string TagName { get; set; }
+        public string Name { get; set; }
         public int? ParentId { get; set; }
         
         public int TagId { get; set; }
@@ -13,7 +13,7 @@
         public PublicNodeDetails(int id, string tagName, int tagId, int hierarchyId)
         {
             Id = id;
-            TagName = tagName;
+            Name = tagName;
             TagId = tagId;
             HierarchyId = hierarchyId;
         }
