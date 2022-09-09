@@ -5,6 +5,7 @@
 import { Box, Stack } from "@mui/material"
 import FilterSection from "./FilterSection"
 import ProjectionSection from "./ProjectionSection"
+import FilterTypes from "../../redux/enums/filter-type-enums"
 import { useAppSelector } from "../../common/hooks"
 
 const FilterMenuStyle = {
@@ -38,9 +39,15 @@ const FilterMenu = () => {
             height: "75%",
           }}
         >
-          <FilterSection filterName="Tags" filters={tags} />
-          <FilterSection filterName="Tagsets" filters={tagsets} />
-          <FilterSection filterName="Hierarchies" filters={hierarchies} />
+          <FilterSection filterName={FilterTypes.TagFilter} filters={tags} />
+          <FilterSection
+            filterName={FilterTypes.TagsetFilter}
+            filters={tagsets}
+          />
+          <FilterSection
+            filterName={FilterTypes.HierarchyFilter}
+            filters={hierarchies}
+          />
         </Stack>
       </Box>
     </>

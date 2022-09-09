@@ -3,9 +3,9 @@
  * */
 
 enum FilterTypes {
-  TagFilter,
-  TagsetFilter,
-  HierarchyFilter,
+  TagFilter = "Tags",
+  TagsetFilter = "Tagsets",
+  HierarchyFilter = "Hierarchies",
 }
 
 export default FilterTypes

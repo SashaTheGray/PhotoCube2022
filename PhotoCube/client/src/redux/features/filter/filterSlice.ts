@@ -31,7 +31,7 @@ const filterSlice: any = createSlice({
   reducers: {
     // Add a filter to the department.
     addFilter: (department: IFilterDepartment, props) => {
-      const filter: IFilter = props.payload.filter
+      const filter: IFilter = props.payload
       switch (filter.filterType) {
         case FilterTypes.TagFilter:
           department.tags.add(filter)
@@ -48,7 +48,7 @@ const filterSlice: any = createSlice({
     },
     // Remove a filter from the department.
     removeFilter: (department: IFilterDepartment, props) => {
-      const filter: IFilter = props.payload.filter
+      const filter: IFilter = props.payload
       switch (filter.filterType) {
         case FilterTypes.TagFilter:
           department.tags.delete(filter)
@@ -65,7 +65,7 @@ const filterSlice: any = createSlice({
     },
     // Clear all filters of a given type.
     clearFilters: (department: IFilterDepartment, props) => {
-      const filtertype = props.payload.filterType
+      const filtertype = props.payload
       switch (filtertype) {
         case FilterTypes.TagFilter:
           department.tags.clear()

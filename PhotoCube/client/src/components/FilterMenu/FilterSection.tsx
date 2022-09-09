@@ -1,5 +1,7 @@
 import { Box, Stack, List, ListItem, ListItemText, Button } from "@mui/material"
 import { IHierarchy, ITag, ITagset } from "../../common/interfaces/"
+import { useAppDispatch } from "../../common/hooks"
+import { clearFilters } from "../../redux/features/filter/filterSlice"
 
 interface FilterSectionProps {
   filterName: string
@@ -25,6 +27,7 @@ const FilterListStyle = {
 
 // Representing a single row of filter selection in the filter menu.
 const FilterSection = ({ filterName, filters }: FilterSectionProps) => {
+  const dispatch = useAppDispatch()
   return (
     <>
       <Box style={FilterSectionStyle}>
@@ -32,7 +35,12 @@ const FilterSection = ({ filterName, filters }: FilterSectionProps) => {
           <h3>{filterName}</h3>
           <Stack direction="row" spacing={2}>
             <Button variant="contained">Add</Button>
-            <Button variant="contained">Clear</Button>
+            <Button
+              variant="contained"
+              onClick={() => dispatch(clearFilters(filterName))}
+            >
+              Clear
+            </Button>
           </Stack>
           <Box
             sx={{
