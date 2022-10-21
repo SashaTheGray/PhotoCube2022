@@ -10,7 +10,7 @@ import {
 } from "@reduxjs/toolkit"
 import Thunk from "redux-thunk"
 import Logger from "./middleware/logger"
-import { filterReducer, filterActions} from "./features/filter"
+import { filterReducer, filterActions } from "./features/filters"
 
 // Configure the Redux store.
 export const photoCubeStore = configureStore({
@@ -27,7 +27,7 @@ export const photoCubeStore = configureStore({
 // Export available actions with the dispatcher.
 export const dispatchAction = bindActionCreators(
   {
-      ...filterActions
+    ...filterActions,
   },
   photoCubeStore.dispatch
 )

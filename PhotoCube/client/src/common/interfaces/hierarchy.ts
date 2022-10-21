@@ -5,8 +5,8 @@
 interface IHierarchy {
   id: number
   name: string
-  parentId?: number
-  tagId?: number
-  hierarchyId?: number
+  parentId: number
+  tagId: number
+  hierarchyId: number
 }
 export default IHierarchy

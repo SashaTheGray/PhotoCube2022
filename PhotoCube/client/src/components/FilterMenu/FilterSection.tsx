@@ -1,10 +1,11 @@
 import { Box, Stack, List, ListItem, ListItemText, Button } from "@mui/material"
 import { IHierarchy, ITag, ITagset } from "../../common/interfaces/"
-import { useAppDispatch } from "../../common/hooks"
-import { clearFilters } from "../../redux/features/filter/filterSlice"
+import FilterTypes from "../../common/enums/filter-type-enums"
+import { FilterModal } from "./FilterModal"
+import { useState } from "react"
 
 interface FilterSectionProps {
-  filterName: string
+  filterType: FilterTypes
   filters: Set<IHierarchy> | Set<ITagset> | Set<ITag>
 }
 
@@ -25,21 +26,26 @@ const FilterListStyle = {
   overflow: "auto",
 }
 
-// Representing a single row of filter selection in the filter menu.
-const FilterSection = ({ filterName, filters }: FilterSectionProps) => {
-  const dispatch = useAppDispatch()
+// Representing a single block of filter selection in the filter menu.
+const FilterSection = ({ filterType, filters }: FilterSectionProps) => {
+  // Modal setup.
+  const [modalState, setModalState] = useState(false)
+  const openModal = () => setModalState(true)
+  const closeModal = () => setModalState(false)
+
   return (
     <>
       <Box style={FilterSectionStyle}>
         <Stack alignItems="center" sx={{ height: "100%", width: "100%" }}>
-          <h3>{filterName}</h3>
-          <Stack direction="row" spacing={2}>
-            <Button variant="contained">Add</Button>
-            <Button
-              variant="contained"
-              onClick={() => dispatch(clearFilters(filterName))}
-            >
-              Clear
+          <Stack
+            alignItems="center"
+            justifyContent="space-between"
+            direction="row"
+            spacing={2}
+          >
+            <h3>{filterType}</h3>
+            <Button variant="contained" onClick={openModal}>
+              Modify
             </Button>
           </Stack>
           <Box
@@ -63,6 +69,11 @@ const FilterSection = ({ filterName, filters }: FilterSectionProps) => {
           </Box>
         </Stack>
       </Box>
+      <FilterModal
+        modalState={modalState}
+        closeModal={closeModal}
+        filterType={filterType}
+      />
     </>
   )
 }
